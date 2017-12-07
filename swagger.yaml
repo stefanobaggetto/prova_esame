@@ -40,7 +40,7 @@ paths:
       description: Creates a new assignment in the DB.  Duplicates are allowed
       operationId: addAssignment
       parameters:
-        - name: assignment
+        - name: new assignment
           in: body
           description: assignment to add to the DB
           required: true
@@ -49,6 +49,25 @@ paths:
       responses:
         200:
           description: assignment response
+          schema:
+            $ref: '#/definitions/Assignment'
+        default:
+          description: unexpected error
+          schema:
+            $ref: '#/definitions/Error'
+    put:
+      description: Update existing assignment.
+      operationId: updateAssignment
+      parameters:
+        - name: assignment
+          in: body
+          description: assignment
+          required: true
+          schema:
+            $ref: '#/definitions/Assignment'
+      responses:
+        200:
+          description: assignment update response
           schema:
             $ref: '#/definitions/Assignment'
         default:
